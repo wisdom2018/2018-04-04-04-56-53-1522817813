@@ -7,12 +7,15 @@ import com.thoughtworks.FizzBuzzGame;
 import org.junit.Test;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.fest.assertions.api.Assertions.assertThat;
 import static org.junit.Assert.*;
 import static org.hamcrest.core.IsEqual.equalTo;
 public class FizzBuzzGameIntegrationTest {
+    FizzBuzzGame fizzBuzzGame = new FizzBuzzGame();
     @Test
     public void testFizzBuzzGameResults() {
         List<String> expectedResults = Arrays.asList(
@@ -29,9 +32,8 @@ public class FizzBuzzGameIntegrationTest {
         );
 
 
-        FizzBuzzGame game = new FizzBuzzGame();
-        game.start(100);
-        List<String> results = game.getResults();
-        assertThat(results, equalTo(expectedResults));
+        ArrayList<String> result = new ArrayList<>();
+        result = fizzBuzzGame.numberIs3_and_5_and_7(100);
+        assertThat(expectedResults).isEqualTo(result);
     }
 }
